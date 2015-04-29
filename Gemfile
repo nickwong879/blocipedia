@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
-
+# bcryot for authentication from scratch
+gem 'bcrypt-ruby', :require => 'bcrypt'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
