@@ -7,20 +7,80 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+		<div class="navbar-wrapper">
+			<div class= "container">
 
-	<div id="user_nav">
-		<% if current_user %>
-			Logged in as <%= current_user.email %>.
-			<%= link_to "Log out", log_out_path %>
-		<% else %>
-			<%= link_to "Sign up", sign_up_path %> or
-			<%= link_to "Log in", log_in_path %>
-		<% end %>
+			<nav class="navbar navbar-inverse navbar-static-top">
+				<div class="container">
+					
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand"><% link_to "#", root_path %>Blocipedia</a>
+					</div>
+					
+					<div id="navbar" class="navbar-collapse collapse">
+						<ul>
+						<ul class="nav navbar-nav">
+							<li class="active"><%= link_to "Home", root_path %></li>
+							<li><%= link_to "About", welcome_about_path %></li>
+							<li><%= link_to "Contact", welcome_contact_path %></li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Index<span class="caret"></span></a>
+								<ul class="dropdown-menu" role="menu">
+									<li><%= link_to "Menu 1" %></li>
+									<li><%= link_to "Menu 2" %></li>
+									<li class="divider"></li>
+									<li class="dropdown-header">Sub-submenu</li>
+									<li><a href="#">Menu-item 3</a></li>
+									<li><a href="#">Menu-item 4</a></li>
+								</ul>
+							</li>
+						</ul>
+									
+						<p class="navbar-text pull-right">
+						<% if current_user %>
+							Logged in as <%= current_user.username %>
+							<%= link_to log_in_path, class: 'btn btn-default btn-xs' do %>
+								<span class="glyphicon glyphicon-user"></span>
+							<% end %> 
+							<%= link_to log_out_path, method: :delete, class: 'btn btn-default btn-xs' do %>
+								<span class="glyphicon glyphicon-forward"></span>
+							<% end %>
+						<% else %>
+							<%= link_to "Sign In", log_in_path %> or
+							<%= link_to "Sign Up", sign_up_path %>  
+						<% end %>
+						</p>
+					</div>
+
+				</div>			
+			</nav>
+		</div>
 	</div>
 
-	<% flash.each do |name, msg| %>
-		<%= content_tag :div, msg, :id => "flash_#{name}" %>
+<div class="container">
+<% if flash[:notice] %>
+	<div class="alert alert-success">
+		<button type="button" class="close" data-dismiss="alert">&times;</button>
+		<%= flash[:notice] %>
+	</div>
+<% elsif flash[:error] %>
+	<div class="alert alert-danger">
+		<button type="button" class="close" data-dismiss="alert">&times;</button>
+		<%= flash[:notice] %>
+	</div>
+<% elsif flash[:error] %>
+	<div class="alert alert-warning">
+		<button type="button" class="close" data-dismiss-"alert">&times;</button>
+		<%= flash[:notice] %>
+	</div>
 	<% end %>
+</div>
 
 <%= yield %>
 

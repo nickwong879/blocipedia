@@ -1,26 +1,65 @@
-<h1>Sign up</h1>
-<%= form_for @user do |f| %>
-	<% if @user.errors.any? %>
-		<div class="error_messages">
-			<h2>Form is invalid</h2>
-			<ul>
-				<% for message in @user.errors.full_messages %>
-					<li><%= message %></li>
-				<% end %>
-			</ul>
-		</div>
+<div class="container">
+<h1>Sign up to Blocipedia today!</h1>
+ <hr class="divider">
+
+	<div class="container">
+      <!-- Three columns of text below the carousel -->
+      <div class="row">
+        <div class="col-lg-5">
+          <h2>Basic Account <h4><span class="label label-warning">Free!</span></h4></h2>
+          <p>Our most popular subscription type - get started immediately, no need for credit card details, just sign up and get contributing!</p>
+          <p><a class="btn btn-primary" href="#" role="button">Go Basic &raquo;</a></p>
+        </div><!-- /.col-lg-4 -->
+    
+        <div class="col-lg-5">
+          <h2>Premium Account <h4><span class="label label-warning">$5 / mth</span></h4></h2>
+          <p>Go Premium and get more - includes all the features of a basic account, plus create private wikis only your trusted contributors can see.</p>
+        </div><!-- /.col-lg-4 -->
+      </div><!-- /.row -->
+
+    </div>
+
+ <hr class="divider">
+
+<div class="row">
+	<div class="col-md-6">
+
+	<%= form_for @user do |f| %>
+		<% if @user.errors.any? %>
+			<div class="error_messages">
+				<h2>Form is invalid</h2>
+				<ul>
+					<% for message in @user.errors.full_messages %>
+						<li><%= message %></li>
+					<% end %>
+				</ul>
+			</div>
 	<% end %>
-	<p>
-		<%= f.label :email %><br/>
-		<%= f.text_field :email %>
-	</p>
-	<p>
-		<%= f.label :password %><br/>
-		<%= f.password_field :password %>
-	</p>
-	<p>
+
+	<div class="form-group">
+		<%= f.label :username %>
+		<%= f.text_field :username, class: 'form-control', placeholder: "Enter a username"  %>
+	</div>
+	
+	<div class="form-group">
+		<%= f.label :email %>
+		<%= f.text_field :email, class: 'form-control', placeholder: "Enter your email address" %>
+	</div>
+	
+	<div class="form-group">
+		<%= f.label :password %>
+		<%= f.password_field :password, class: 'form-control', placeholder: "Enter a password" %>
+	</div>
+	
+	<div class="form-group">
 		<%= f.label :password_confirmation %>
-		<%= f.password_field :password_confirmation %>
-	</p>
-	<p class="button"><%= f.submit %></p>
-<% end %>
+		<%= f.password_field :password_confirmation, class: 'form-control', placeholder: "Confirm your password" %>
+	</div>
+	
+	<%= f.submit "Sign up", class: 'btn btn-primary' %>
+	<% end %>
+	
+	</div>
+</div>
+
+</div>

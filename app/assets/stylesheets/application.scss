@@ -13,3 +13,12 @@
  *= require_tree .
  *= require_self
  */
+ 
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
+ .navbar-inverse {
+
+  background-color: #504D6D;
+
+ }
