@@ -1,0 +1,10 @@
+Hi <%= @user.username %>,
+
+Thanks for registering for Blocipedia!  To confirm your registration, please click on the link below.
+
+<%= confirm_email_user_url(@user.confirm_token) %>
+
+Thanks and wiki-wiki-on...
+
+Nick
+Blocipedia
