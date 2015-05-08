@@ -1,41 +1,42 @@
 <div class="container">
-<h1>Sign up to Blocipedia today!</h1>
- <hr class="divider">
+	
+	<div class="page-header">
+		<h1>Sign up to Blocipedia today<small> ...get your wiki on!</small></h1>
+	</div>
 
 	<div class="container">
-      <!-- Three columns of text below the carousel -->
-      <div class="row">
-        <div class="col-lg-5">
-          <h2>Basic Account <h4><span class="label label-warning">Free!</span></h4></h2>
-          <p>Our most popular subscription type - get started immediately, no need for credit card details, just sign up and get contributing!</p>
-          <p><a class="btn btn-primary" href="#" role="button">Go Basic &raquo;</a></p>
-        </div><!-- /.col-lg-4 -->
-    
-        <div class="col-lg-5">
-          <h2>Premium Account <h4><span class="label label-warning">$5 / mth</span></h4></h2>
-          <p>Go Premium and get more - includes all the features of a basic account, plus create private wikis only your trusted contributors can see.</p>
-        </div><!-- /.col-lg-4 -->
-      </div><!-- /.row -->
 
-    </div>
+
+ 	<div class="row">
+		<ul class="nav nav-pills">
+			<li class="active"><a href="#basic" data-toggle="tab">Basic</a></li>
+			<li><a href="#premium" data-toggle="tab">Premium</a></li>
+		</ul>
+		<div class="tab-content">
+			
+			<div class="tab-pane active" id="basic">
+			<h3>Basic Account  <h4><span class="label label-warning">Free!</span></h4></h3>
+          	<p>Our most popular subscription type - get started immediately, no need for credit card details, just sign up and get contributing!</p>			
+          	</div>
+			
+			<div class="tab-pane" id="premium">
+			<h3>Premium Account <h4><span class="label label-warning">$5 / mth</span></h4></h2>
+          	<p>Go Premium and get more - includes all the features of a basic account, plus create private wikis only your trusted contributors can see.</p>
+  			</div>
+		
+		</div>
+	</div>
+
+	</div>
+
 
  <hr class="divider">
 
 <div class="row">
 	<div class="col-md-6">
 
-	<%= form_for @user do |f| %>
-		<% if @user.errors.any? %>
-			<div class="alert alert-danger">
-				<h4>Form is invalid</h4>
-				<ul>
-					<% @user.errors.full_messages.each do |message| %>
-						<li><%= message %></li>
-					<% end %>
-				</ul>
-			</div>
-	<% end %>
-
+	<%= form_for :user, url: '/users' do |f| %>
+		
 	<div class="form-group">
 		<%= f.label :username %>
 		<%= f.text_field :username, class: 'form-control', placeholder: "Enter a username"  %>
@@ -62,6 +63,5 @@
 	<% end %>
 	
 	</div>
-</div>
 
 </div>

@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
 
-  get 'users/new'
 
   get 'welcome/index'
 
@@ -9,17 +7,17 @@ Rails.application.routes.draw do
 
   get 'welcome/about'
 
-  get 'log_out' => 'sessions#destroy', :as => 'log_out'
-  get 'log_in' => 'sessions#new', :as => 'log_in'
-  get 'sign_up' => 'users#new', :as => 'sign_up'
+ 
+  get 'log_in' => 'sessions#new'
+  post 'log_in' => 'sessions#create'
+  get 'log_out' => 'sessions#destroy'
   
-  resources :users do
-    member do
-      get :confirm_email
-    end
-  end
-  
+  get 'sign_up' => 'users#new'
+  post 'users' => 'users#create'
+
+  resources :user
   resources :sessions
+  resources :wikis
 
   root :to => 'welcome#index'
 

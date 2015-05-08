@@ -1,0 +1,32 @@
+
+
+
+<div class="container">
+	
+	<div class="page-header">
+		<h1>Wikis<small> ...for everything we have to share</small></h1>
+	</div>
+
+<% @wikis.each do |wiki| %>	
+		<div class="Row">
+			<div class="col-md-8">	
+					<h4><%= link_to wiki.title, wiki %></h4>
+					<small><small>created <%= time_ago_in_words(wiki.created_at) %> ago</small></small>
+
+					
+
+			</div>
+		</div>
+<% end %>
+
+</div>
+
+
+
+
+<div class="container">
+<hr class="divider">
+
+<%= link_to "Create a new Wiki", new_wiki_path, class: "btn btn-success" %>
+
+</div>

@@ -1,0 +1,31 @@
+<div class="container">
+
+<ol class="breadcrumb">
+	<li><%= link_to "Home", root_path %></li>
+	<li><%= link_to "Back to wikis", wikis_path %></li>
+	<li class="active"><%= @wiki.id %></li>
+</ol>
+
+<div class="panel panel-info">
+	<div class="panel-heading">
+		<h2 class="panel-title"><%= @wiki.title %></h2>
+	</div>
+
+
+
+
+	<div class="panel-body">
+
+	<p><%= @wiki.body %></p>
+
+	</div>
+
+	<div class="panel-footer">
+	<small>created <%= time_ago_in_words(@wiki.created_at) %> ago.</small>
+	</div>
+
+</div>
+
+<%= link_to "Update", edit_wiki_path(@wiki), class: "btn btn-success" %>
+
+</div>

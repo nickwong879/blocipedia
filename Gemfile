@@ -1,14 +1,29 @@
 source 'https://rubygems.org'
 # bcryot for authentication from scratch
-gem 'bcrypt-ruby', :require => 'bcrypt'
+gem 'bcrypt', '~> 3.1.10'
 
 # Bootstrap CSS
 gem 'bootstrap-sass'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
+
+# Changing web server
+gem 'puma', group: :production
+gem 'thin', group: :development
+
+group :production do
+
+  gem 'pg', '~> 0.18.1'
+  gem 'rails_12factor'
+
+end
+
+group :development do
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
+end
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -46,4 +61,7 @@ group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
+
+
+
 
