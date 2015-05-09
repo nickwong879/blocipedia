@@ -1,35 +1,57 @@
-
-<welcome>
-
-<div class="welcome-body">
-
 <div class="container">
+  
+  <div class="page-header">
+    <h1>Blocipedia<small> ...a place for everything you want to share</small></h1>
+  </div>
 
-    <div class="site-wrapper">
+</div>
 
-      <div class="site-wrapper-inner">
 
-        <div class="cover-container">
-
-          <div class="inner cover">
-            <h1 class="cover-heading">Blocipedia - wiki your way through life...</h1><br>
-            <p class="lead">Blocipedia lets you create wikis, share them and collaborate.</p>             
-            <p class="lead">
-			<%= link_to "Sign Up Now!", sign_up_path, class: 'btn btn-default' %> 
-		  </div>
-
-          <div class="mastfoot">
-            <div class="inner">
-              <p>Created by <a href="mailto:nickwong879@gmail.com">Nick Wong</a></p>
+   <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <%= image_tag("img1.jpg", class: "first-slide", alt: "First slide")%>
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Etiam nec rhoncus massa.</h1>
+              <p>Mauris eu metus neque. Fusce sed faucibus dolor. Quisque ornare tellus non augue ullamcorper, at tincidunt risus pretium. Nunc in dui eu augue congue accumsan a id sem. Aliquam erat volutpat. Aliquam erat volutpat. Mauris cursus arcu id lacus dapibus, id suscipit elit fermentum.</p>
+              <p><%= link_to "Sign up today", new_user_registration_path, class: "btn btn-lg btn-primary" %></p>
             </div>
           </div>
-
         </div>
-
+        <div class="item">
+          <%= image_tag("img2.jpg", class: "second-slide", alt: "Second slide")%>
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Proin ac augue velit.</h1>
+              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+              <p><%= link_to "Visit the wikis", wikis_path, class: "btn btn-lg btn-primary" %></p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <%= image_tag("img3.jpg", class: "third-slide", alt: "Third slide")%>
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Maecenas dapibus nisl id pellentesque mollis.</h1>
+              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+             <p><%= link_to "Log in now", new_user_session_path, class: "btn btn-lg btn-primary" %></p>
+            </div>
+          </div>
+        </div>
       </div>
-
-    </div>
-
-</div>
-
-</div>
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div><!-- /.carousel -->

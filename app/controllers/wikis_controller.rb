@@ -1,6 +1,7 @@
 class WikisController < ApplicationController
   def index
-  	@wikis = Wiki.all
+  	@wikis = Wiki.paginate(page: params[:page], per_page: 10)
+    authorize @wikis
   end
 
   def show

@@ -1,10 +1,22 @@
 class User < ActiveRecord::Base
 
-# attr_accessible :email, :password, :password_confirmation
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
-attr_accessor :password
+has_many :wikis
 
-has_secure_password
+def admin?
+  role == 'admin'
+end
 
+def moderator?
+  role == 'moderator'
+end
+
+def premium?
+  role == 'premium'
+end
 
 end

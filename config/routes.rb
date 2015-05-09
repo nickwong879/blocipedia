@@ -7,16 +7,10 @@ Rails.application.routes.draw do
 
   get 'welcome/about'
 
- 
-  get 'log_in' => 'sessions#new'
-  post 'log_in' => 'sessions#create'
-  get 'log_out' => 'sessions#destroy'
   
-  get 'sign_up' => 'users#new'
-  post 'users' => 'users#create'
-
+  devise_for :users
+  resources :users
   resources :user
-  resources :sessions
   resources :wikis
 
   root :to => 'welcome#index'

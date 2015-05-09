@@ -8,6 +8,22 @@ gem 'bootstrap-sass'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 
+# Devise for authentication
+gem 'devise'
+
+# Figaro for security
+gem 'figaro', '~> 1.1.1'
+
+# Pundit for authorization
+gem 'pundit'
+
+# Faker for seeding
+gem 'faker'
+
+# Will_paginate for pagination with bootstrap styling
+gem 'will_paginate', '~> 3.0.7'
+gem 'will_paginate-bootstrap'
+
 # Changing web server
 gem 'puma', group: :production
 gem 'thin', group: :development
