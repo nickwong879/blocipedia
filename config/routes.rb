@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :users
   resources :user
   resources :wikis
+  resources :charges
 
   root :to => 'welcome#index'
 

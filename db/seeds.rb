@@ -13,7 +13,9 @@ require 'faker'
 	user = User.new(
 		username: Faker::Name.name,
 		email:  Faker::Internet.email,
-		password:  Faker::Lorem.characters(10) 
+		password:  Faker::Lorem.characters(10),
+		bio: Faker::Lorem.sentences(2),
+		likes: Faker::Lorem.paragraphs(5)
 		)
 	user.skip_confirmation!
 	user.save!
@@ -25,7 +27,7 @@ users = User.all
 50.times do
 	wiki = Wiki.create!(
 		title:  Faker::Lorem.sentence,
-		body:  Faker::Lorem.paragraph
+		body:  Faker::Lorem.paragraphs(8)
 		)
 		# Setting created_at times
 	wiki.update_attributes!(created_at: rand(10.minutes .. 1.year).ago)
@@ -37,7 +39,33 @@ admin = User.new(
 	username:  'Admin',
 	email:  'admin@example.com',
 	password:  'helloworld',
-	role:  'admin'
+	role:  'admin',
+	bio: Faker::Lorem.sentence,
+	likes: Faker::Lorem.paragraph
+	)
+	admin.skip_confirmation!
+	admin.save!
+
+# Create a basic user
+admin = User.new(
+	username:  'Basic',
+	email:  'basic@example.com',
+	password:  'helloworld',
+	role:  nil,
+	bio: Faker::Lorem.sentence,
+	likes: Faker::Lorem.paragraph
+	)
+	admin.skip_confirmation!
+	admin.save!
+
+# Create a premium user
+admin = User.new(
+	username:  'Premium',
+	email:  'premium@example.com',
+	password:  'helloworld',
+	role:  'premium',
+	bio: Faker::Lorem.sentence,
+	likes: Faker::Lorem.paragraph
 	)
 	admin.skip_confirmation!
 	admin.save!

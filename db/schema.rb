@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150509102144) do
+ActiveRecord::Schema.define(version: 20150510034013) do
 
   create_table "users", force: :cascade do |t|
     t.string   "email"
@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(version: 20150509102144) do
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
     t.string   "role"
+    t.string   "bio"
+    t.string   "likes"
   end
 
   create_table "wikis", force: :cascade do |t|

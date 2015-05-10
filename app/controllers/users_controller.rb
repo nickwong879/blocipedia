@@ -18,10 +18,19 @@ end
     end
   end
 
+def upgrade
+  if current_user.update_attribute(:role, 'premium')
+    flash[:notice] = "Premium upgrade successful!"
+  else
+    flash[:error] = "Upgrade not successful, please check and try again"
+end
+
+end
+
 private
 
   def user_params
-  	params.require(:user).permit(:username, :email, :password, :password_confirmation)
+  	params.require(:user).permit(:username, :email, :password, :password_confirmation, :role)
   end
 
 end

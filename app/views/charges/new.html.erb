@@ -1,0 +1,48 @@
+<div class="container">
+
+	<div class="page-header">
+		<h1>Upgrade to Premium<small> ...and get more!</small></h1>
+	</div>
+</div>
+
+<div class="container">
+<h2>Premium features:</h2>
+
+<div class="media">
+
+  <div class="media-left media-middle">
+      <img class="media-object" src="..." alt="...">
+  
+  <div class="media-body">
+    <h4 class="media-heading">Lorem ipsum dolor sit amet</h4>
+    Nam interdum nec urna faucibus vulputate. Donec semper at magna id rhoncus. Fusce aliquam porttitor porttitor. Ut ac mattis nunc. In pretium velit eu sapien rutrum lacinia. Quisque et mollis risus. Vivamus sed nisi nec ex laoreet molestie. Integer mollis ornare euismod. Nulla fermentum magna nec dignissim lobortis. Aliquam in accumsan ex, eget ultrices augue.
+  </div>
+</div>
+
+  <div class="media-left media-middle">
+      <img class="media-object" src="..." alt="...">
+  
+  <div class="media-body">
+    <h4 class="media-heading">Nullam euismod, leo ut consectetur iaculis</h4>
+    Suspendisse libero tellus, condimentum at consequat ut, sollicitudin sit amet lacus. Sed sed dolor at libero pulvinar accumsan id sit amet lacus. Vivamus ut varius orci, vitae hendrerit risus. Aliquam magna leo, euismod ac leo convallis, pharetra maximus augue. Nunc tempor malesuada ligula, nec vulputate lectus porttitor id.
+  </div>
+</div>
+
+    <div class="media-left media-middle">
+      <img class="media-object" src="..." alt="...">
+  
+  <div class="media-body">
+    <h4 class="media-heading">Nullam faucibus ultricies tristique</h4>
+    Mauris pharetra, nibh vel dignissim ullamcorper, nisi purus vehicula neque, sed vulputate lacus massa non neque. Fusce in quam in dolor interdum interdum. Praesent dictum nibh metus, ac vulputate mi posuere a. Pellentesque purus risus, fringilla a elementum quis, scelerisque id mi. Nam at varius ligula.
+  </div>
+</div>
+
+</div>
+<hr class="divider">
+
+ <%= form_tag charges_path do %>
+   <h4>Click here to become a Premium user:</h4>
+   <script class='stripe-button' src="https://checkout.stripe.com/checkout.js" data-key="<%= @stripe_btn_data[:key] %>" data-amount=<%= @stripe_btn_data[:amount] %> data-description="<%= @stripe_btn_data[:description] %>" ></script>
+ <% end %>
+
+</div>

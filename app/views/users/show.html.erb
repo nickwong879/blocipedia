@@ -1,9 +1,50 @@
 <div class="container">
+
+	<ol class="breadcrumb">
+		<li><%= link_to "Home", root_path %></li>
+		<li><%= link_to "Back to users", users_path %></li>
+		<li class="active"><%= @user.username %></li>
+	</ol>
+
 	
 	<div class="page-header">
-		<h1>Blocipediers<small> ...unite</small></h1>
+		<h1>Profile<small></small></h1>
 	</div>
 
-<p> placeholder for Show view </p>
+<h2><%= @user.username %></h2>
 
+<small>Blocipedier user since <%= @user.created_at.to_date %></small>
+
+<br>
+
+<hr class="divider">
+
+<h4>In short:</h4><p>  <%=@user.bio %></p>
+<br/>
+
+<h4>You like:</h4><p> <%=@user.likes %></p>
+
+<br/>
+
+<% if @user == current_user %>
+<%= link_to "Edit your profile here", edit_registration_path(current_user) %>
+<% end %>
+
+<hr class="divider">
+	<% if @user == current_user && @user.role == 'premium' %>
+
+	You are currently a <span class="badge">PREMIUM USER</span>
+
+	<% elsif @user == current_user && @user.role == 'admin' %>
+
+	You are currently an <span class="badge">ADMIN USER</span>
+
+	<% elsif @user == current_user && @user.role == nil %>
+
+	<small>You are currently a <span class="badge">BASIC USER</span>
+
+				<p>Enjoying Blocipedia? Why not upgrade to Premium and get more...  </p> </small>
+					<%= link_to "Go Premium", new_charge_path, class: 'btn btn-success' %>
+
+	<% end %>
 </div>

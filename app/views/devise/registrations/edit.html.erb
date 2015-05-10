@@ -1,39 +1,88 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="container">
 
+  <div class="page-header">
+    <h1>Edit <%= resource_name.to_s.humanize %> Profile</h1>
+      <% if @user == current_user && @user.role == 'premium' %><span class="badge">PREMIUM USER</span>
+  <% end %>
+  </div>
+
+<div class="row">
+  <div class="col-md-6">
+    
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+    <div class="form-group">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, class: 'form-control', autofocus: true %>
+    </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+      <%= f.password_field :password, class: 'form-control', autocomplete: "off" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, class: 'form-control', autocomplete: "off" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+      <%= f.password_field :current_password, class: 'form-control', autocomplete: "off" %>
+    </div>
+    <% end %>
+
+  </div>
+</div>
+
+<hr class="divider">
+
+  <h3>Edit personal information</h3>
+    <div class="row">
+      <div class="col-md-6">
+      
+      <%= form_for(current_user) do |f| %>
+      
+      <div class="form-group">
+        <%= f.label :username %>
+        <%= f.text_field :username, class: 'form-control', placeholder: "Enter name", autofocus: true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :bio %>
+        <%= f.text_field :bio, class: 'form-control', placeholder: "You, in a sentence", autofocus: true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :likes %>
+        <%= f.text_area :likes, rows: 10, class: 'form-control', placeholder: "Your likes and interests", autofocus: true %>
+      </div>
+
+
+    <div class="actions">
+      <%= f.submit "Update" %>
+    </div>
   <% end %>
+</div>
+</div>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+<% if @user == current_user && @user.role == 'premium' %>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
+<hr class="divider">
+  <p>You are currently a <span class="badge">PREMIUM USER</span></p>  
+  <p><small>You can downgrade back to basic by clicking <%= link_to "here", charge_path(current_user), data: { confirm: "Confirm downgrade to Basic?" }, method: :delete %></small></p>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
 <% end %>
 
-<h3>Cancel my account</h3>
+<hr class="divider">
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-default btn-xs' %></p>
 
-<%= link_to "Back", :back %>
+</div>
+
