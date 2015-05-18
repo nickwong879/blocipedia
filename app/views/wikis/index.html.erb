@@ -10,10 +10,14 @@
 			<div class="col-md-8">
 
 					<h4><%= link_to wiki.title, wiki %></h4>
-					<small><small>created <%= time_ago_in_words(wiki.created_at) %> ago, last updated <%= time_ago_in_words(wiki.updated_at) %> ago</small></small>	
-
+						<% if wiki.private? %>
+							<span class="badge">Private Wiki</span>	
+						<% end %>
 					
-
+					<small><small>created <%= time_ago_in_words(wiki.created_at) %> ago, last updated <%= time_ago_in_words(wiki.updated_at) %> ago
+	
+						
+					</small></small>
 			</div>
 		</div>
 <% end %>

@@ -16,12 +16,18 @@
 
 	<div class="panel-body">
 
-	<p><%= @wiki.body %></p>
+	<p><%= markdown_to_html @wiki.body %></p>
 
 	</div>
 
 	<div class="panel-footer">
-	<small>created <%= time_ago_in_words(@wiki.created_at) %> ago, updated <%= time_ago_in_words(@wiki.updated_at) %> ago.</small>
+	
+	<small>created by <%= @user %> <%= time_ago_in_words(@wiki.created_at) %> ago, updated <%= time_ago_in_words(@wiki.updated_at) %> ago.</small>
+	
+	<% if @wiki.private? %>
+		<p>This is a <span class="badge">Private Wiki</span></p>
+	<% end %>
+	
 	</div>
 
 </div>

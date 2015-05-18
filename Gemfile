@@ -27,6 +27,9 @@ gem 'will_paginate-bootstrap'
 # Stripe for payments
 gem 'stripe'
 
+# redcarpet for markdown
+gem 'redcarpet'
+
 # Changing web server
 gem 'puma', group: :production
 gem 'thin', group: :development

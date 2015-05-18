@@ -24,10 +24,24 @@ users = User.all
 
 # Create wikis
 
-50.times do
+25.times do
 	wiki = Wiki.create!(
+		user: users.sample,
 		title:  Faker::Lorem.sentence,
-		body:  Faker::Lorem.paragraphs(8)
+		body:  Faker::Lorem.paragraphs(8),
+		private: 'true'
+		)
+		# Setting created_at times
+	wiki.update_attributes!(created_at: rand(10.minutes .. 1.year).ago)
+end
+wikis = Wiki.all
+
+25.times do
+	wiki = Wiki.create!(
+		user: users.sample,
+		title:  Faker::Lorem.sentence,
+		body:  Faker::Lorem.paragraphs(8),
+		private: 'false'
 		)
 		# Setting created_at times
 	wiki.update_attributes!(created_at: rand(10.minutes .. 1.year).ago)

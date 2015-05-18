@@ -1,11 +1,12 @@
 class WikisController < ApplicationController
   def index
-  	@wikis = Wiki.paginate(page: params[:page], per_page: 10)
+  	@wikis = Wiki.visible_to(current_user).paginate(page: params[:page], per_page: 10)
     authorize @wikis
   end
 
   def show
   	@wiki = Wiki.find(params[:id])
+    authorize @wiki
   end
 
   def new
@@ -13,7 +14,7 @@ class WikisController < ApplicationController
   end
 
   def create
-  	@wiki = Wiki.new(wiki_params)
+  	@wiki = current_user.wikis.new(wiki_params)
   	if @wiki.save
   		flash[:notice] = "Wiki created"
   		redirect_to @wiki
@@ -42,7 +43,7 @@ class WikisController < ApplicationController
 private
 
   def wiki_params
-  	params.require(:wiki).permit(:title, :body)
+  	params.require(:wiki).permit(:title, :body, :private, :user_id)
   end
 
 end

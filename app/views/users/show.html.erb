@@ -24,6 +24,10 @@
 
 <h4>You like:</h4><p> <%=@user.likes %></p>
 
+<% @user.wikis.each do |wiki| %>
+<%= wiki.title %>
+<% end %>
+
 <br/>
 
 <% if @user == current_user %>
@@ -31,11 +35,11 @@
 <% end %>
 
 <hr class="divider">
-	<% if @user == current_user && @user.role == 'premium' %>
+	<% if @user == current_user && @user.premium? %>
 
 	You are currently a <span class="badge">PREMIUM USER</span>
 
-	<% elsif @user == current_user && @user.role == 'admin' %>
+	<% elsif @user == current_user && @user.admin? %>
 
 	You are currently an <span class="badge">ADMIN USER</span>
 
