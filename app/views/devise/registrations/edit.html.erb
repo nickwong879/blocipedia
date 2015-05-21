@@ -76,7 +76,7 @@
 
 <hr class="divider">
   <p>You are currently a <span class="badge">PREMIUM USER</span></p>  
-  <p><small>You can downgrade back to basic by clicking <%= link_to "here", charge_path(current_user), data: { confirm: "Confirm downgrade to Basic?" }, method: :delete %></small></p>
+  <p><small>You can downgrade back to basic by clicking <%= link_to "here", charge_path(current_user), data: { confirm: "WARNING: Your private wikis will become public if you downgrade.  Click OK to continue?" }, method: :delete %></small></p>
 
 <% end %>
 

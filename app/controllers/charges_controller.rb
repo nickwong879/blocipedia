@@ -41,7 +41,7 @@ end
 def destroy
 	current_user.update_attribute(:role, nil)
 	@wikis = current_user.wikis
-	@wikis.update_attribute(:private, 'false')
+	@wikis.update_all(private: false)
 	flash[:notice] = "Successfully downgraded to basic"
 	redirect_to user_path(current_user)
 end

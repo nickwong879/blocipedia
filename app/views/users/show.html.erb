@@ -24,17 +24,28 @@
 
 <h4>You like:</h4><p> <%=@user.likes %></p>
 
-<% @user.wikis.each do |wiki| %>
-<%= wiki.title %>
+<hr class="divider">
+
+<h4>Wikis:</h4>
+
+<div class"list-group">
+	<% @user.wikis.each do |wiki| %>
+		<li> 
+			<%= link_to wiki.title, wiki %>
+			<small><small> Created <%= time_ago_in_words(wiki.created_at) %> ago </small></small>
+			<% if wiki.private? %>
+			<span class="badge">Private Wiki</span>
+			<% end %>
+		</li>
 <% end %>
+</div>
 
 <br/>
 
-<% if @user == current_user %>
-<%= link_to "Edit your profile here", edit_registration_path(current_user) %>
-<% end %>
-
 <hr class="divider">
+
+
+
 	<% if @user == current_user && @user.premium? %>
 
 	You are currently a <span class="badge">PREMIUM USER</span>
@@ -49,6 +60,11 @@
 
 				<p>Enjoying Blocipedia? Why not upgrade to Premium and get more...  </p> </small>
 					<%= link_to "Go Premium", new_charge_path, class: 'btn btn-success' %>
-
 	<% end %>
+<br/>
+<% if @user == current_user %>
+<%= link_to "Edit your profile here", edit_registration_path(current_user) %>
+<% end %>
+
+
 </div>
