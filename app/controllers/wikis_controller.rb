@@ -26,9 +26,11 @@ class WikisController < ApplicationController
 
   def edit
   	@wiki = Wiki.find(params[:id])
+    @users = User.all
   end
 
   def update
+    @users = User.all
   	@wiki = Wiki.find(params[:id])
   	if @wiki.update_attributes(wiki_params)
   		flash[:notice] = "Wiki updated"
@@ -43,7 +45,7 @@ class WikisController < ApplicationController
 private
 
   def wiki_params
-  	params.require(:wiki).permit(:title, :body, :private)
+  	params.require(:wiki).permit(:title, :body, :private, :user_id)
   end
 
 end
