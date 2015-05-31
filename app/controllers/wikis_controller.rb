@@ -1,7 +1,6 @@
 class WikisController < ApplicationController
   def index
-  	@wikis = Wiki.visible_to(current_user).paginate(page: params[:page], per_page: 10)
-    authorize @wikis
+    @wikis = policy_scope(Wiki)
   end
 
   def show
@@ -32,7 +31,13 @@ class WikisController < ApplicationController
   def update
     @users = User.all
   	@wiki = Wiki.find(params[:id])
-  	if @wiki.update_attributes(wiki_params)
+  	ids = params['col-ids'].split(",")
+    puts ids.inspect
+    ids.each do |id|
+          Collaborator.create(user_id: id, wiki_id:(params[:id]))
+    end
+
+    if @wiki.update_attributes(wiki_params)
   		flash[:notice] = "Wiki updated"
   		redirect_to @wiki
   	else

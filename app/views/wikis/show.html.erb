@@ -16,9 +16,27 @@
 
 	<div class="panel-body">
 
-	<p><%= markdown_to_html @wiki.body %></p>
+		<p><%= markdown_to_html @wiki.body %></p>
 
 	</div>
+
+	<% if @wiki.private? %>
+	<hr class="divider">
+
+	<div class="panel-body">
+
+		<p>Private Wiki - Collaborators:</p>
+		
+		<% @wiki.users.each do |user| %>
+			<ul>
+				<li><small><%= link_to user.username, user %></small></li>
+			</ul>
+		
+		<% end %>
+
+	</div>
+	<% end %>
+
 
 	<div class="panel-footer">
 	
@@ -29,7 +47,6 @@
 	<% end %>
 	
 	</div>
-
 </div>
 
 <%= link_to "Update", edit_wiki_path(@wiki), class: "btn btn-success" %>

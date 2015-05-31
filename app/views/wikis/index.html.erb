@@ -27,9 +27,9 @@
 
 <div class="container">
 	<hr class="divider">
-		<div class="paginate">
-			<%= will_paginate @wikis, renderer: BootstrapPagination::Rails %><br>
-		</div>
+
+	<% @wikis %>
+
 
 	<%= link_to "Create a new Wiki", new_wiki_path, class: "btn btn-success" %>
 

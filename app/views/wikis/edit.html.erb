@@ -9,6 +9,8 @@
 
 	<%= form_for @wiki do |f| %>
 
+		<input type="hidden" name="col-ids" id="col-ids">
+
 		<div class="form-group">
 			<%= f.label :title %>
 			<%= f.text_field :title, class: 'form-control' %>
@@ -20,7 +22,7 @@
 		</div>
 
 		<div class="form-group">
-			<%= f.submit "Update", class: 'btn btn-success' %>
+			<%= f.submit "Update", class: 'btn btn-success', id: 'add-collaborators' %>
 		</div>
 		
 		<% if current_user.role == 'admin' || current_user.role == 'premium' %>
@@ -34,16 +36,18 @@
 
 		<h4>Add collaborators</h4>
 
+			<ul id="list-group">
 			<% @users.each do |user| %>
-				<ul class="list-group">
 	  				<li class="list-group-item" input type="col-id" id="<%= user.id %>">
 	  					<%= f.label :collaborator, class: 'checkbox' do %>
 	  					<%= f.check_box :user_id %>
 	  					<%= user.username %>
 	  					<% end %>
 	  				</li>
-				</ul>		
 			<% end %>
+			</ul>	
+<!--This is my working javascript -->
+
 <script>
 
 function checkArray(array, id){
@@ -60,14 +64,17 @@ function checkArray(array, id){
 
 $(document).ready(function() {
   var selected = []
-$('.table tbody').on( 'click', 'tr input', function () {
-  checkArray(selected, $(this).val());
+	$('#list-group li').click( function () {
+  		checkArray(selected, this.id );
+  	} );
+	$('#add-collaborators').click( function () {
+  $('#col-ids').val(selected);
   } );
-$('#add-collaborators).click( function () {
-  $('#col-ids).val(selected);
-  } );
+});
 
 </script>
+
+<!--This is the end of my working javascript -->
 
 		<% end %>
 
