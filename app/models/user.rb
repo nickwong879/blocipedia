@@ -8,6 +8,12 @@ class User < ActiveRecord::Base
   has_many :collaborators
   has_many :wikis, through: :collaborators
 
+  extend FriendlyId
+  friendly_id :username
+  # validates_format_of :email, :with => /\A[a-z0-9]+\z/i
+
+
+
 def collaborators
 	Collaborator.where(user_id: id)
 end

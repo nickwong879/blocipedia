@@ -30,6 +30,9 @@ gem 'stripe'
 # redcarpet for markdown
 gem 'redcarpet'
 
+# FriendlyID for URL masking
+gem 'friendly_id', '~> 5.1.0'
+
 # Changing web server
 gem 'puma', group: :production
 gem 'thin', group: :development
